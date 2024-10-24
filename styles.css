@@ -38,10 +38,10 @@ body {
             blue,
             indigo,
             violet);
-    margin: 0 15px;
+    margin: 0 3px;
     height: 80px; /* Hauteur de base pour mobile */
     max-height: 200px; /* Hauteur maximale pour éviter le débordement */
-    width: 20px;
+    width: 5px;
     border-radius: 30px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5),
         0 0 30px rgba(0, 0, 255, 0.3);
@@ -330,7 +330,6 @@ footer a:hover {
 
     .slider {
         height: 100px; /* Hauteur augmentée pour les sliders */
-        width: 30px; /* Largeur plus grande pour les sliders */
     }
 
     #container {
