@@ -1,3 +1,9 @@
+/* Styles de base pour mobile */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 html,
 body {
     display: flex;
@@ -8,11 +14,9 @@ body {
     height: 100vh;
     margin: 0;
     font-family: 'Roboto', sans-serif;
-    overflow-x: hidden;
+    overflow: hidden;
     background: #000;
-    /* Fixed the syntax here */
     background-size: cover;
-    /* Optional: to cover the entire body */
 }
 
 .Loader {
@@ -21,9 +25,7 @@ body {
     justify-content: center;
     flex-direction: row;
     margin-bottom: 30px;
-    height: 100px;
-    /* Hauteur maximale du loader */
-    /* Espacement sous le loader */
+    height: 100px; /* Hauteur maximale du loader */
 }
 
 .slider {
@@ -36,27 +38,19 @@ body {
             blue,
             indigo,
             violet);
-    /* Fond transparent */
     margin: 0 15px;
-    height: 80px;
-    /* Hauteur de base */
-    max-height: 200px;
-    /* Hauteur maximale pour éviter le débordement */
+    height: 80px; /* Hauteur de base pour mobile */
+    max-height: 200px; /* Hauteur maximale pour éviter le débordement */
     width: 20px;
     border-radius: 30px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5),
-        /* Ombre portée */
         0 0 30px rgba(0, 0, 255, 0.3);
-    /* Lueur bleue */
     position: relative;
-    transition: height 0.3s;
-    /* Transition douce pour la hauteur */
+    transition: height 0.3s; /* Transition douce pour la hauteur */
 }
 
-
 .slider:hover {
-    transform: scale(1.1);
-    /* Agrandir au survol */
+    transform: scale(1.1); /* Agrandir au survol */
 }
 
 .slider::before {
@@ -67,10 +61,8 @@ body {
     height: 20px;
     width: 20px;
     border-radius: 100%;
-    background-color: #2697f3;
-    /* Couleur de la sphère */
-    box-shadow: 0 0 10px rgba(0, 0, 255, 0.5);
-    /* Lueur autour */
+    background-color: #2697f3; /* Couleur de la sphère */
+    box-shadow: 0 0 10px rgba(0, 0, 255, 0.5); /* Lueur autour */
     animation: animate_2 2.5s ease-in-out infinite;
     animation-delay: calc(-0.5s * var(--i));
 }
@@ -79,31 +71,29 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 20px;
-    /* Espacement sous les contrôles */
+    margin-top: 2rem;
+    margin-bottom: 20px; /* Espacement sous les contrôles */
 }
 
 #container {
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: column;
     position: relative;
     z-index: 100000;
-    background: rgba(0, 0, 0, 0.7);
-    /* Dark translucent background */
-    border-radius: 15px;
-    /* Rounded corners */
-    padding: 30px;
-    /* Padding inside the container */
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7);
-    /* Deep shadow for a floating effect */
-    backdrop-filter: blur(10px);
-    /* Blur effect for a modern look */
+    background: rgba(0, 0, 0, 0.7); /* Dark translucent background */
+    border-radius: 15px; /* Rounded corners */
+    padding: 30px 5px; /* Padding inside the container */
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7); /* Deep shadow for a floating effect */
+    backdrop-filter: blur(10px); /* Blur effect for a modern look */
+    width: 90%;
+    margin: auto;
+    overflow: hidden; /* Ajoutez ceci pour éviter le débordement */
 }
 
 #player {
     display: flex;
     flex-direction: column;
-    margin-left: 2rem;
+    align-items: center;
 }
 
 #musicList {
@@ -117,86 +107,65 @@ body {
 }
 
 button {
-    background-color: #FF9800;
-    /* Main button color */
-    color: black;
-    /* Text color */
+    background-color: #FF9800; /* Main button color */
+    color: black; /* Text color */
+    width: 60%;
+    margin: auto;
     border: none;
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s;
-    /* Smooth transition */
-    margin-bottom: 20px;
-    /* Espacement sous le bouton */
-    font-size: 16px;
-    /* Font size for the button */
+    transition: background-color 0.3s, transform 0.3s; /* Smooth transition */
+    margin-bottom: 20px; /* Espacement sous le bouton */
+    font-size: 16px; /* Font size for the button */
 }
 
 button:hover {
-    background-color: #F57C00;
-    /* Darker color on hover */
-    transform: scale(1.05);
-    /* Slight enlargement on hover */
+    background-color: #F57C00; /* Darker color on hover */
+    transform: scale(1.05); /* Slight enlargement on hover */
 }
 
 label {
-    color: white;
-    /* Couleur du texte */
-    margin-bottom: 10px;
-    /* Espacement sous le label */
-    font-size: 20px;
-    /* Taille du texte */
-    text-shadow: 0 0 10px rgba(0, 0, 255, 0.5);
-    /* Ombre de texte */
+    color: white; /* Couleur du texte */
+    margin-bottom: 10px; /* Espacement sous le label */
+    font-size: 20px; /* Taille du texte */
+    text-shadow: 0 0 10px rgba(0, 0, 255, 0.5); /* Ombre de texte */
 }
 
 footer {
-    position: absolute;
-    /* Positionner le footer en bas */
+    position: absolute; /* Positionner le footer en bas */
     bottom: 0;
     left: 0;
     width: 100%;
-    text-align: center;
-    /* Centre le texte */
-    background-color: rgba(0, 0, 0, 0.7);
-    /* Fond semi-transparent */
-    color: white;
-    /* Couleur du texte */
-    padding: 10px 0;
-    /* Espacement */
-    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5);
-    /* Ombre au-dessus du footer */
+    text-align: center; /* Centre le texte */
+    background-color: rgba(0, 0, 0, 0.7); /* Fond semi-transparent */
+    color: white; /* Couleur du texte */
+    padding: 10px 0; /* Espacement */
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5); /* Ombre au-dessus du footer */
 }
 
 footer a {
-    color: #FF9800;
-    /* Couleur du lien */
-    text-decoration: none;
-    /* Pas de soulignement */
+    color: #FF9800; /* Couleur du lien */
+    text-decoration: none; /* Pas de soulignement */
 }
 
 footer a:hover {
-    text-decoration: underline;
-    /* Souligner le lien au survol */
+    text-decoration: underline; /* Souligner le lien au survol */
+}
+
+#bg-container{
+    height: calc(100% - 75px); /* Ajuster la hauteur pour compenser la marge */
+    width: calc(100%); /* Ajuster la largeur pour compenser la marge */
+    position: absolute;
+    top: 0; /* Ajustez cette valeur pour la marge supérieure */
+    left: 0; /* Ajustez cette valeur pour la marge gauche */
+    -webkit-filter: blur(1px) grayscale(0.2) saturate(1.2) sepia(0.2);
+    overflow: hidden; /* Ajoutez ceci si nécessaire */
 }
 
 .fogwrapper {
-    height: calc(100% - 130px);
-    /* Ajuster la hauteur pour compenser la marge */
-    width: calc(100% - 100px);
-    /* Ajuster la largeur pour compenser la marge */
     position: absolute;
-    top: 0;
-    /* Ajustez cette valeur pour la marge supérieure */
-    left: 0;
-    /* Ajustez cette valeur pour la marge gauche */
-    margin: 50px;
-    /* Ajoutez une marge de 10px tout autour */
-    -webkit-filter: blur(1px) grayscale(0.2) saturate(1.2) sepia(0.2);
-    border: 2px solid white;
 }
-
 
 #foglayer_01 {
     width: 200%;
@@ -216,13 +185,7 @@ footer a:hover {
 }
 
 #foglayer_02 {
-    width: 200%;
-    height: 100%;
-    position: absolute;
-    animation: foglayer_02_opacity 21s linear infinite,
-        foglayer_moveme 13s linear infinite;
-    -webkit-animation: foglayer_01_opacity 21s linear infinite,
-        foglayer_moveme 13s linear infinite;
+    animation: foglayer_03_opacity 21s linear infinite, foglayer_moveme 13s linear infinite;
 }
 
 #foglayer_02 .image01,
@@ -235,13 +198,7 @@ footer a:hover {
 }
 
 #foglayer_03 {
-    width: 200%;
-    height: 100%;
-    position: absolute;
-    animation: foglayer_02_opacity 21s linear infinite,
-        foglayer_moveme 13s linear infinite;
-    -webkit-animation: foglayer_01_opacity 21s linear infinite,
-        foglayer_moveme 13s linear infinite;
+    animation: foglayer_02_opacity 21s linear infinite, foglayer_moveme 13s linear infinite;
 }
 
 #foglayer_03 .image01,
@@ -253,7 +210,18 @@ footer a:hover {
     float: left;
 }
 
+#foglayer_01,
+#foglayer_02,
+#foglayer_03 {
+    width: 200%;
+    height: 100%;
+    position: absolute;
+    overflow: hidden; /* Ajoutez ceci pour éviter le débordement */
+    animation: foglayer_01_opacity 10s linear infinite, foglayer_moveme 15s linear infinite;
+    -webkit-animation: foglayer_01_opacity 10s linear infinite, foglayer_moveme 15s linear infinite;
+}
 
+/* Animations */
 @keyframes animate_2 {
     0% {
         transform: translateY(250px);
@@ -271,32 +239,6 @@ footer a:hover {
 }
 
 @keyframes foglayer_01_opacity {
-    0% {
-        opacity: .1;
-    }
-
-    22% {
-        opacity: .5;
-    }
-
-    40% {
-        opacity: .28;
-    }
-
-    58% {
-        opacity: .4;
-    }
-
-    80% {
-        opacity: .16;
-    }
-
-    100% {
-        opacity: .1;
-    }
-}
-
-@-webkit-keyframes foglayer_01_opacity {
     0% {
         opacity: .1;
     }
@@ -344,51 +286,7 @@ footer a:hover {
     }
 }
 
-@-webkit-keyframes foglayer_02_opacity {
-    0% {
-        opacity: .5;
-    }
-
-    25% {
-        opacity: .2;
-    }
-
-    50% {
-        opacity: .1;
-    }
-
-    80% {
-        opacity: .3;
-    }
-
-    100% {
-        opacity: .5;
-    }
-}
-
 @keyframes foglayer_03_opacity {
-    0% {
-        opacity: .8;
-    }
-
-    27% {
-        opacity: .2;
-    }
-
-    52% {
-        opacity: .6;
-    }
-
-    68% {
-        opacity: .3;
-    }
-
-    100% {
-        opacity: .8;
-    }
-}
-
-@-webkit-keyframes foglayer_03_opacity {
     0% {
         opacity: .8;
     }
@@ -420,12 +318,51 @@ footer a:hover {
     }
 }
 
-@-webkit-keyframes foglayer_moveme {
-    0% {
-        left: 0;
+/* Media Query pour les écrans de bureau */
+@media (min-width: 768px) {
+    body {
+        flex-direction: row; /* Changement de direction pour les écrans plus larges */
     }
 
-    100% {
-        left: -100%;
+    .Loader {
+        height: 150px; /* Hauteur plus grande pour le loader */
     }
+
+    .slider {
+        height: 100px; /* Hauteur augmentée pour les sliders */
+        width: 30px; /* Largeur plus grande pour les sliders */
+    }
+
+    #container {
+        padding: 60px; /* Plus d'espace dans le conteneur */
+        flex-direction: row-reverse;
+        justify-content: center;
+        width: 40rem;
+    }
+
+    #musicList li {
+        font-size: 18px; /* Taille de police plus grande pour la liste de musique */
+    }
+
+    button {
+        font-size: 18px; /* Taille de police du bouton plus grande */
+        padding: 12px 24px; /* Espacement accru pour le bouton */
+    }
+
+    label {
+        font-size: 24px; /* Taille de police plus grande pour les labels */
+    }
+
+    footer {
+        font-size: 18px; /* Ajustement de la taille de police du footer */
+    }
+
+    .fogwrapper {
+        height: calc(100% - 130px); /* Ajuster la hauteur pour compenser la marge */
+        width: calc(100% - 100px); /* Ajuster la largeur pour compenser la marge */
+        margin: 50px; /* Ajoutez une marge de 50px tout autour */
+        border: 2px solid white;
+    }
+
+    /* Vous pouvez ajouter d'autres styles spécifiques pour le bureau ici */
 }
