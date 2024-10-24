@@ -1,0 +1,431 @@
+html,
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    overflow-x: hidden;
+    background: #000;
+    /* Fixed the syntax here */
+    background-size: cover;
+    /* Optional: to cover the entire body */
+}
+
+.Loader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    margin-bottom: 30px;
+    height: 100px;
+    /* Hauteur maximale du loader */
+    /* Espacement sous le loader */
+}
+
+.slider {
+    overflow: hidden;
+    background: linear-gradient(to bottom,
+            red,
+            orange,
+            yellow,
+            green,
+            blue,
+            indigo,
+            violet);
+    /* Fond transparent */
+    margin: 0 15px;
+    height: 80px;
+    /* Hauteur de base */
+    max-height: 200px;
+    /* Hauteur maximale pour éviter le débordement */
+    width: 20px;
+    border-radius: 30px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5),
+        /* Ombre portée */
+        0 0 30px rgba(0, 0, 255, 0.3);
+    /* Lueur bleue */
+    position: relative;
+    transition: height 0.3s;
+    /* Transition douce pour la hauteur */
+}
+
+
+.slider:hover {
+    transform: scale(1.1);
+    /* Agrandir au survol */
+}
+
+.slider::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    border-radius: 100%;
+    background-color: #2697f3;
+    /* Couleur de la sphère */
+    box-shadow: 0 0 10px rgba(0, 0, 255, 0.5);
+    /* Lueur autour */
+    animation: animate_2 2.5s ease-in-out infinite;
+    animation-delay: calc(-0.5s * var(--i));
+}
+
+.controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+    /* Espacement sous les contrôles */
+}
+
+#container {
+    display: flex;
+    flex-direction: row-reverse;
+    position: relative;
+    z-index: 100000;
+    background: rgba(0, 0, 0, 0.7);
+    /* Dark translucent background */
+    border-radius: 15px;
+    /* Rounded corners */
+    padding: 30px;
+    /* Padding inside the container */
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7);
+    /* Deep shadow for a floating effect */
+    backdrop-filter: blur(10px);
+    /* Blur effect for a modern look */
+}
+
+#player {
+    display: flex;
+    flex-direction: column;
+    margin-left: 2rem;
+}
+
+#musicList {
+    color: white;
+    padding-left: 0;
+    line-height: 1.5;
+}
+
+#musicList li {
+    cursor: pointer;
+}
+
+button {
+    background-color: #FF9800;
+    /* Main button color */
+    color: black;
+    /* Text color */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    /* Smooth transition */
+    margin-bottom: 20px;
+    /* Espacement sous le bouton */
+    font-size: 16px;
+    /* Font size for the button */
+}
+
+button:hover {
+    background-color: #F57C00;
+    /* Darker color on hover */
+    transform: scale(1.05);
+    /* Slight enlargement on hover */
+}
+
+label {
+    color: white;
+    /* Couleur du texte */
+    margin-bottom: 10px;
+    /* Espacement sous le label */
+    font-size: 20px;
+    /* Taille du texte */
+    text-shadow: 0 0 10px rgba(0, 0, 255, 0.5);
+    /* Ombre de texte */
+}
+
+footer {
+    position: absolute;
+    /* Positionner le footer en bas */
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    /* Centre le texte */
+    background-color: rgba(0, 0, 0, 0.7);
+    /* Fond semi-transparent */
+    color: white;
+    /* Couleur du texte */
+    padding: 10px 0;
+    /* Espacement */
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5);
+    /* Ombre au-dessus du footer */
+}
+
+footer a {
+    color: #FF9800;
+    /* Couleur du lien */
+    text-decoration: none;
+    /* Pas de soulignement */
+}
+
+footer a:hover {
+    text-decoration: underline;
+    /* Souligner le lien au survol */
+}
+
+.fogwrapper {
+    height: calc(100% - 130px);
+    /* Ajuster la hauteur pour compenser la marge */
+    width: calc(100% - 100px);
+    /* Ajuster la largeur pour compenser la marge */
+    position: absolute;
+    top: 0;
+    /* Ajustez cette valeur pour la marge supérieure */
+    left: 0;
+    /* Ajustez cette valeur pour la marge gauche */
+    margin: 50px;
+    /* Ajoutez une marge de 10px tout autour */
+    -webkit-filter: blur(1px) grayscale(0.2) saturate(1.2) sepia(0.2);
+    border: 2px solid white;
+}
+
+
+#foglayer_01 {
+    width: 200%;
+    height: 100%;
+    position: absolute;
+    animation: foglayer_01_opacity 10s linear infinite, foglayer_moveme 15s linear infinite;
+    -webkit-animation: foglayer_01_opacity 10s linear infinite, foglayer_moveme 15s linear infinite;
+}
+
+#foglayer_01 .image01,
+#foglayer_01 .image02 {
+    background: url("img/fog1.png") repeat-x top left transparent;
+    background-size: 100%;
+    width: 50%;
+    height: 100%;
+    float: left;
+}
+
+#foglayer_02 {
+    width: 200%;
+    height: 100%;
+    position: absolute;
+    animation: foglayer_02_opacity 21s linear infinite,
+        foglayer_moveme 13s linear infinite;
+    -webkit-animation: foglayer_01_opacity 21s linear infinite,
+        foglayer_moveme 13s linear infinite;
+}
+
+#foglayer_02 .image01,
+#foglayer_02 .image02 {
+    background: url("img/fog2.png") repeat-x top left transparent;
+    background-size: 100%;
+    width: 50%;
+    height: 100%;
+    float: left;
+}
+
+#foglayer_03 {
+    width: 200%;
+    height: 100%;
+    position: absolute;
+    animation: foglayer_02_opacity 21s linear infinite,
+        foglayer_moveme 13s linear infinite;
+    -webkit-animation: foglayer_01_opacity 21s linear infinite,
+        foglayer_moveme 13s linear infinite;
+}
+
+#foglayer_03 .image01,
+#foglayer_03 .image02 {
+    background: url("img/fog2.png") repeat-x top left transparent;
+    background-size: 100%;
+    width: 50%;
+    height: 100%;
+    float: left;
+}
+
+
+@keyframes animate_2 {
+    0% {
+        transform: translateY(250px);
+        filter: hue-rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(250px);
+        filter: hue-rotate(180deg);
+    }
+}
+
+@keyframes foglayer_01_opacity {
+    0% {
+        opacity: .1;
+    }
+
+    22% {
+        opacity: .5;
+    }
+
+    40% {
+        opacity: .28;
+    }
+
+    58% {
+        opacity: .4;
+    }
+
+    80% {
+        opacity: .16;
+    }
+
+    100% {
+        opacity: .1;
+    }
+}
+
+@-webkit-keyframes foglayer_01_opacity {
+    0% {
+        opacity: .1;
+    }
+
+    22% {
+        opacity: .5;
+    }
+
+    40% {
+        opacity: .28;
+    }
+
+    58% {
+        opacity: .4;
+    }
+
+    80% {
+        opacity: .16;
+    }
+
+    100% {
+        opacity: .1;
+    }
+}
+
+@keyframes foglayer_02_opacity {
+    0% {
+        opacity: .5;
+    }
+
+    25% {
+        opacity: .2;
+    }
+
+    50% {
+        opacity: .1;
+    }
+
+    80% {
+        opacity: .3;
+    }
+
+    100% {
+        opacity: .5;
+    }
+}
+
+@-webkit-keyframes foglayer_02_opacity {
+    0% {
+        opacity: .5;
+    }
+
+    25% {
+        opacity: .2;
+    }
+
+    50% {
+        opacity: .1;
+    }
+
+    80% {
+        opacity: .3;
+    }
+
+    100% {
+        opacity: .5;
+    }
+}
+
+@keyframes foglayer_03_opacity {
+    0% {
+        opacity: .8;
+    }
+
+    27% {
+        opacity: .2;
+    }
+
+    52% {
+        opacity: .6;
+    }
+
+    68% {
+        opacity: .3;
+    }
+
+    100% {
+        opacity: .8;
+    }
+}
+
+@-webkit-keyframes foglayer_03_opacity {
+    0% {
+        opacity: .8;
+    }
+
+    27% {
+        opacity: .2;
+    }
+
+    52% {
+        opacity: .6;
+    }
+
+    68% {
+        opacity: .3;
+    }
+
+    100% {
+        opacity: .8;
+    }
+}
+
+@keyframes foglayer_moveme {
+    0% {
+        left: 0;
+    }
+
+    100% {
+        left: -100%;
+    }
+}
+
+@-webkit-keyframes foglayer_moveme {
+    0% {
+        left: 0;
+    }
+
+    100% {
+        left: -100%;
+    }
+}
